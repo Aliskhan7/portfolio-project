@@ -72,19 +72,19 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
-    title: "3D Solar System Planets to Explore",
-    des: "Explore the wonders of our solar system with this captivating 3D simulation of the planets using Three.js.",
-    img: "/p1.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/fm.svg"],
-    link: "https://github.com/adrianhajdin?tab=repositories",
+    title: "Azars property",
+    des: "Агенство дневижимости по продаже квартир и домов в Турции",
+    img: "/p1.png",
+    iconLists: ["/next.svg", "/re.svg", "/tail.svg", "/ts.svg"],
+    link: "Недоступно",
   },
   {
     id: 2,
-    title: "Yoom - Video Conferencing App",
-    des: "Simplify your video conferencing experience with Yoom. Seamlessly connect with colleagues and friends.",
-    img: "/p2.svg",
+    title: "Farcana - Competitive Team-Based Hero Action",
+    des: "Step into Farcana, a 4v4 shooter, where immersive gameplay meets high-speed, competitive hero action. Quick movements and fast, tactical decision-making are key. Your weapons play a vital role, but true victory demands strategic ability use and seamless teamwork. Dive into the thrill of intense Star battles!",
+    img: "/Far.png",
     iconLists: ["/next.svg", "/tail.svg", "/ts.svg", "/stream.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/zoom-clone",
+    link: "https://platform.farcana.com",
   },
   {
     id: 3,
