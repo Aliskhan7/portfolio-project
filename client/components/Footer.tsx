@@ -1,10 +1,6 @@
-import React from "react";
-import { FaLocationArrow } from "react-icons/fa6";
-import MagicButton from "@/components/ui/MagicButton";
+import React, { useEffect, useState } from "react";
 import { socialMedia } from "@/data";
-import * as Dialog from "@radix-ui/react-dialog";
-import { Modal } from "@/components/ui/Modal";
-// import { Cross2Icon } from "@radix-ui/react-icons";
+import { Form } from "@/components/ui/Form";
 
 const Footer = () => {
   return (
@@ -25,42 +21,7 @@ const Footer = () => {
           Reach out to me today and let&apos;s discuss how I can help you
           achieve your goals.
         </p>
-
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <MagicButton
-              title="Let's get in touch"
-              icon={<FaLocationArrow />}
-              position="right"
-            />
-          </Dialog.Trigger>
-          <Dialog.Portal>
-            <Dialog.Overlay className="DialogOverlay" />
-            <Dialog.Content className="DialogContent">
-              {/*<div>*/}
-              {/*  <Modal />*/}
-              {/*</div>*/}
-              dfsfs
-              <div
-                style={{
-                  display: "flex",
-                  marginTop: 25,
-                  justifyContent: "flex-end",
-                }}
-              >
-                <Dialog.Close asChild>
-                  <button className="Button green">Save changes</button>
-                </Dialog.Close>
-              </div>
-              <Dialog.Close asChild>
-                <button className="IconButton" aria-label="Close">
-                  X
-                </button>
-              </Dialog.Close>
-            </Dialog.Content>
-          </Dialog.Portal>
-        </Dialog.Root>
-
+        <Form />
         {/*<a href="mailto:aliskhangazamatov@gmail.com">*/}
         {/*  <MagicButton*/}
         {/*    title="Let's get in touch"*/}
