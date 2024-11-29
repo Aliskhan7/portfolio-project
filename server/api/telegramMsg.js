@@ -7,8 +7,7 @@ module.exports = (req, res) => {
   let fields = [
     '<b>Name</b>:' + reqBody.name,
     '<b>Email</b>:' + reqBody.email,
-    '<b>Phone</b>:' + reqBody.phone,
-    '<b>Descriotion</b>:' + reqBody.description,
+    '<b>Telegram</b>:' + reqBody.telegram,
   ]
 
   let msg = ''
