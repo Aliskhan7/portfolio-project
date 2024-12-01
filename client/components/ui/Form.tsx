@@ -6,8 +6,21 @@ import { Input } from "@/components/ui/Input";
 import { Label } from "@/components/ui/Label";
 import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
+import { useForm } from "@mantine/form";
 
 export function Form() {
+  const form = useForm({
+    mode: "uncontrolled",
+    initialValues: {
+      email: "",
+      termsOfService: false,
+    },
+
+    validate: {
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+    },
+  });
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     console.log("Form submitted");
@@ -166,6 +179,7 @@ export function Form() {
     </div>
   );
 }
+//-1002291965069
 
 const BottomGradient = () => {
   return (
