@@ -6,6 +6,7 @@ import {
   ThemeProvider,
   ThemeProvider as NextThemesProvider,
 } from "next-themes";
+import { MantineProvider } from "@mantine/core";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -23,7 +24,7 @@ export default function RootLayout({ children }: any) {
           enableSystem
           disableTransitionOnChange
         >
-          {children}
+          <MantineProvider>{children}</MantineProvider>
         </ThemeProvider>
       </body>
     </html>

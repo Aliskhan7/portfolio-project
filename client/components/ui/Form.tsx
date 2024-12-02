@@ -7,13 +7,18 @@ import { Label } from "@/components/ui/Label";
 import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 import { useForm } from "@mantine/form";
+import { TextInput } from "@mantine/core";
+import { sendMessage } from "@/api/telegram";
 
 export function Form() {
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm({
     mode: "uncontrolled",
     initialValues: {
+      name: "",
       email: "",
-      termsOfService: false,
+      telegram: "",
     },
 
     validate: {
@@ -21,9 +26,22 @@ export function Form() {
     },
   });
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log("Form submitted");
+  const handleSubmit = async ({
+    email,
+    name,
+    telegram,
+  }: typeof form.values) => {
+    try {
+      const message = `Email: ${email}, Name: ${name}, Telegram: ${telegram},`;
+
+      await sendMessage(message);
+
+      setIsLoading(true);
+    } catch (e) {
+      form.setFieldError("email", "error");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   // Создаём состояния для наших инпутов.
@@ -111,7 +129,7 @@ export function Form() {
 
   return (
     <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
-      <form className="my-8" onSubmit={handleSubmit}>
+      <form className="my-8" onSubmit={form.onSubmit(handleSubmit)}>
         <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             {nameDirty && nameError && (
@@ -119,6 +137,12 @@ export function Form() {
             )}
             <>
               <Label htmlFor="firstname">First name</Label>
+              <TextInput
+                withAsterisk
+                placeholder="name"
+                key={form.key("name")}
+                {...form.getInputProps("name")}
+              />
               <Input
                 value={name}
                 onChange={changeName}
@@ -133,6 +157,12 @@ export function Form() {
             )}
             <>
               <Label htmlFor="email">Email Address</Label>
+              <TextInput
+                withAsterisk
+                placeholder="your@email.com"
+                key={form.key("email")}
+                {...form.getInputProps("email")}
+              />
               <Input
                 value={email}
                 onChange={changeEmail}
@@ -147,6 +177,12 @@ export function Form() {
             )}
             <>
               <Label htmlFor="email">Telegram</Label>
+              <TextInput
+                withAsterisk
+                placeholder="telegram"
+                key={form.key("@telegram")}
+                {...form.getInputProps("telegram")}
+              />
               <Input
                 value={telegram}
                 onChange={changeTelegram}
@@ -166,13 +202,15 @@ export function Form() {
         {/*  Send &rarr;*/}
         {/*  <BottomGradient />*/}
         {/*</button>*/}
-        <button onClick={submitData}>
+        {isLoading ? (
+          <p>loading....</p>
+        ) : (
           <MagicButton
             title="Let's get in touch"
             icon={<FaLocationArrow />}
             position="right"
           />
-        </button>
+        )}
 
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
       </form>
