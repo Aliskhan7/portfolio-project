@@ -9,6 +9,7 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { useForm } from "@mantine/form";
 import { TextInput } from "@mantine/core";
 import { sendMessage } from "@/api/telegram";
+import { notifications } from "@mantine/notifications";
 
 export function Form() {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,13 +33,17 @@ export function Form() {
     telegram,
   }: typeof form.values) => {
     try {
+      setIsLoading(true);
       const message = `Email: ${email}, Name: ${name}, Telegram: ${telegram},`;
 
       await sendMessage(message);
 
-      setIsLoading(true);
+      notifications.show({
+        title: "Заявка отпрвлена",
+        message: "Вам ответят в ближайшее время 🙃",
+      });
     } catch (e) {
-      form.setFieldError("email", "error");
+      form.setFieldError("email", e as string);
     } finally {
       setIsLoading(false);
     }
@@ -137,19 +142,13 @@ export function Form() {
             )}
             <>
               <Label htmlFor="firstname">First name</Label>
-              <TextInput
-                withAsterisk
-                placeholder="name"
-                key={form.key("name")}
-                {...form.getInputProps("name")}
-              />
               <Input
-                value={name}
-                onChange={changeName}
                 onBlur={(e) => blurHandler(e)}
                 id="firstname"
-                placeholder="Tyler"
+                placeholder="Your name"
                 type="text"
+                key={form.key("Your name")}
+                {...form.getInputProps("name")}
               />
             </>
             {emailDirty && emailError && (
@@ -157,19 +156,14 @@ export function Form() {
             )}
             <>
               <Label htmlFor="email">Email Address</Label>
-              <TextInput
-                withAsterisk
-                placeholder="your@email.com"
-                key={form.key("email")}
-                {...form.getInputProps("email")}
-              />
+
               <Input
-                value={email}
-                onChange={changeEmail}
                 onBlur={(e) => blurHandler(e)}
                 id="email"
                 placeholder="projectmayhem@fc.com"
                 type="email"
+                key={form.key("projectmayhem@fc.com")}
+                {...form.getInputProps("email")}
               />
             </>
             {telegramDirty && telegramError && (
@@ -177,19 +171,14 @@ export function Form() {
             )}
             <>
               <Label htmlFor="email">Telegram</Label>
-              <TextInput
-                withAsterisk
-                placeholder="telegram"
-                key={form.key("@telegram")}
-                {...form.getInputProps("telegram")}
-              />
+
               <Input
-                value={telegram}
-                onChange={changeTelegram}
                 onBlur={(e) => blurHandler(e)}
                 id="telegram"
                 placeholder="@name"
                 type="text"
+                key={form.key("@name")}
+                {...form.getInputProps("telegram")}
               />
             </>
           </LabelInputContainer>

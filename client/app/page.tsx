@@ -7,6 +7,8 @@ import Clients from "@/components/Clients";
 import Experience from "@/components/Experience";
 import Approach from "@/components/Approach";
 import Footer from "@/components/Footer";
+import { Notification } from "@mantine/core";
+import { Notifications } from "@mantine/notifications";
 
 export default function Home() {
   return (
@@ -20,6 +22,7 @@ export default function Home() {
         <Experience />
         <Approach />
         <Footer />
+        <Notifications className="absolute" color="teal" mt="md" />
       </div>
     </main>
   );
