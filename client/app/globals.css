@@ -87,3 +87,13 @@
     background: linear-gradient(90deg, #161a31 0%, #06091f 100%);
   }
 }
+.mantine-Input-wrapper {
+  width: 100%;
+}
+.mantine-Input-wrapper .mantine-Input-input {
+  width: 100%;
+  background: transparent;
+  outline: none;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}

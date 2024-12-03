@@ -7,5 +7,9 @@ export const sendMessage = async (message: string): Promise<void> => {
 
   const response = await fetch(url);
 
-  console.log("response", response);
+  if (!response.ok) {
+    const error = await response.json();
+
+    await Promise.reject(error || "Что-то пошло не так...");
+  }
 };
