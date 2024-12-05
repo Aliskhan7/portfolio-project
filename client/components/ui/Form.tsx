@@ -7,12 +7,12 @@ import { Label } from "@/components/ui/Label";
 import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 import { useForm } from "@mantine/form";
-import { TextInput } from "@mantine/core";
 import { sendMessage } from "@/api/telegram";
-import { notifications } from "@mantine/notifications";
+import Notifications from "@/components/ui/Notifications";
 
 export function Form() {
   const [isLoading, setIsLoading] = useState(false);
+  const [notifications, setNotifications] = useState(false);
 
   const form = useForm({
     mode: "uncontrolled",
@@ -37,11 +37,7 @@ export function Form() {
       const message = `Email: ${email}, Name: ${name}, Telegram: ${telegram},`;
 
       await sendMessage(message);
-
-      notifications.show({
-        title: "Заявка отпрвлена",
-        message: "Вам ответят в ближайшее время 🙃",
-      });
+      setNotifications(true);
     } catch (e) {
       form.setFieldError("email", e as string);
     } finally {
@@ -203,6 +199,7 @@ export function Form() {
 
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
       </form>
+      {notifications && <Notifications />}
     </div>
   );
 }

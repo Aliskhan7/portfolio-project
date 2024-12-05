@@ -17,6 +17,7 @@
     "@react-three/drei": "^9.112.0",
     "@react-three/fiber": "^8.17.6",
     "clsx": "^2.1.1",
+    "flowbite": "^2.5.2",
     "framer-motion": "^11.3.31",
     "i18next": "^23.16.4",
     "mini-svg-data-uri": "^1.4.4",

@@ -92,8 +92,12 @@
 }
 .mantine-Input-wrapper .mantine-Input-input {
   width: 100%;
-  background: transparent;
-  outline: none;
+  border: none !important;
+  background: transparent !important;
+  outline: none !important;
   padding-top: 8px;
   padding-bottom: 8px;
+}
+.mantine-Input-wrapper .mantine-Input-input[type="text"]:focus {
+  outline: none !important;
 }
