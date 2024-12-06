@@ -7,12 +7,12 @@ import { Label } from "@/components/ui/Label";
 import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 import { useForm } from "@mantine/form";
-import { TextInput } from "@mantine/core";
 import { sendMessage } from "@/api/telegram";
-import { notifications } from "@mantine/notifications";
+import Notifications from "@/components/ui/Notifications";
 
 export function Form() {
   const [isLoading, setIsLoading] = useState(false);
+  const [notifications, setNotifications] = useState(true);
 
   const form = useForm({
     mode: "uncontrolled",
@@ -23,7 +23,9 @@ export function Form() {
     },
 
     validate: {
-      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+      email: (value) => (/^\S+@\S+$/.test(value) ? null : "Некоректный Email"),
+      telegram: (value) =>
+        /@\S+$/.test(value) ? null : "Telegram не может быть пустым",
     },
   });
 
@@ -38,12 +40,11 @@ export function Form() {
 
       await sendMessage(message);
 
-      notifications.show({
-        title: "Заявка отпрвлена",
-        message: "Вам ответят в ближайшее время 🙃",
-      });
+      setNotifications(true);
+      setTimeout(() => setNotifications(false), 3000);
     } catch (e) {
       form.setFieldError("email", e as string);
+      form.setFieldError("telegram", e as string);
     } finally {
       setIsLoading(false);
     }
@@ -135,12 +136,9 @@ export function Form() {
   return (
     <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
       <form className="my-8" onSubmit={form.onSubmit(handleSubmit)}>
-        <div className="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mb-4">
+        <div className="flex flex-col md:flex-row space-y-t md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            {nameDirty && nameError && (
-              <div className="error1">{nameError}</div>
-            )}
-            <>
+            <div className="mb-4">
               <Label htmlFor="firstname">First name</Label>
               <Input
                 onBlur={(e) => blurHandler(e)}
@@ -150,13 +148,9 @@ export function Form() {
                 key={form.key("Your name")}
                 {...form.getInputProps("name")}
               />
-            </>
-            {emailDirty && emailError && (
-              <div className="error2">{emailError}</div>
-            )}
-            <>
+            </div>
+            <div className="mb-4">
               <Label htmlFor="email">Email Address</Label>
-
               <Input
                 onBlur={(e) => blurHandler(e)}
                 id="email"
@@ -165,13 +159,9 @@ export function Form() {
                 key={form.key("projectmayhem@fc.com")}
                 {...form.getInputProps("email")}
               />
-            </>
-            {telegramDirty && telegramError && (
-              <div className="error3">{telegramError}</div>
-            )}
-            <>
+            </div>
+            <div className="mb-5">
               <Label htmlFor="email">Telegram</Label>
-
               <Input
                 onBlur={(e) => blurHandler(e)}
                 id="telegram"
@@ -180,7 +170,7 @@ export function Form() {
                 key={form.key("@name")}
                 {...form.getInputProps("telegram")}
               />
-            </>
+            </div>
           </LabelInputContainer>
         </div>
 
@@ -203,6 +193,7 @@ export function Form() {
 
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
       </form>
+      <Notifications isOpen={notifications} setIsOpen={setNotifications} />
     </div>
   );
 }
