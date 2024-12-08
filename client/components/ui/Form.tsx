@@ -9,10 +9,17 @@ import { FaLocationArrow } from "react-icons/fa6";
 import { useForm } from "@mantine/form";
 import { sendMessage } from "@/api/telegram";
 import Notifications from "@/components/ui/Notifications";
+import Spinner from "@/components/ui/Spinner";
+
+export type Notification = {
+  message: string;
+  type: "success" | "error";
+};
 
 export function Form() {
   const [isLoading, setIsLoading] = useState(false);
-  const [notifications, setNotifications] = useState(true);
+  const [notification, setNotification] = useState<Notification | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm({
     mode: "uncontrolled",
@@ -40,96 +47,20 @@ export function Form() {
 
       await sendMessage(message);
 
-      setNotifications(true);
-      setTimeout(() => setNotifications(false), 3000);
+      setIsOpen(true);
+      setNotification({
+        message: "Сообщение успешно отправлено!",
+        type: "success",
+      });
+
+      setTimeout(() => setIsOpen(false), 4000);
     } catch (e) {
       form.setFieldError("email", e as string);
       form.setFieldError("telegram", e as string);
+
+      setNotification({ message: `Ошибка: ${e}`, type: "error" });
     } finally {
       setIsLoading(false);
-    }
-  };
-
-  // Создаём состояния для наших инпутов.
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [telegram, setTelegram] = useState("");
-
-  // Состояния для валидации
-  const [nameDirty, setEmailDirty] = useState(false);
-  const [emailDirty, setNameDirty] = useState(false);
-  const [telegramDirty, setTelegramDirty] = useState(false);
-  const [nameError, setNameError] = useState("Имя не может быть пустым");
-  const [emailError, setEmailError] = useState("email не может быть пустым");
-  const [telegramError, setTelegramError] = useState(
-    "Telegram не может быть пустым",
-  );
-
-  // Создаём функции для изменения состояния имени и валидации имени.
-  const changeName = (e: any) => {
-    setName(e.target.value);
-    const re = /^([а-я]{1}[а-яё]{3,23}|[a-z]{1}[a-z]{3,23})$/;
-    if (!re.test(String(e.target.value).toLowerCase())) {
-      setNameError("Некоректное имя");
-    } else {
-      setNameError("");
-    }
-  };
-
-  // Создаём функции для изменения состояния имени и валидации email.
-  const changeEmail = (e: any) => {
-    setEmail(e.target.value);
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-
-    if (!re.test(String(e.target.value).toLowerCase())) {
-      setEmailError("Некоректный email");
-    } else {
-      setEmailError("");
-    }
-  };
-
-  // Создаём функции для изменения состояния имени и валидации Telegram.
-  const changeTelegram = (e: any) => {
-    setTelegram(e.target.value);
-  };
-
-  // Валидации всей формы и кнопки отправки
-  const [formValid, setFormValid] = useState(false);
-  useEffect(() => {
-    if (emailError || telegramError || nameError) {
-      setFormValid(false);
-    } else {
-      setFormValid(true);
-    }
-  }, [emailError, telegramError, nameError]);
-
-  // Функция для отправки формы
-  const submitData = (e: any) => {
-    e.preventDefault();
-    fetch(" http://localhost:5000/telegram", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ name, email, telegram }),
-    })
-      .then((response) => response.json())
-      .then((result) => alert(result.response.msg));
-  };
-
-  const blurHandler = (e: any) => {
-    switch (e.target.name) {
-      case "name":
-        setNameDirty(true);
-        break;
-      case "telegram":
-        setTelegramDirty(true);
-        break;
-      case "email":
-        setEmailDirty(true);
-        break;
-      default:
     }
   };
 
@@ -141,7 +72,6 @@ export function Form() {
             <div className="mb-4">
               <Label htmlFor="firstname">First name</Label>
               <Input
-                onBlur={(e) => blurHandler(e)}
                 id="firstname"
                 placeholder="Your name"
                 type="text"
@@ -152,7 +82,6 @@ export function Form() {
             <div className="mb-4">
               <Label htmlFor="email">Email Address</Label>
               <Input
-                onBlur={(e) => blurHandler(e)}
                 id="email"
                 placeholder="projectmayhem@fc.com"
                 type="email"
@@ -163,7 +92,6 @@ export function Form() {
             <div className="mb-5">
               <Label htmlFor="email">Telegram</Label>
               <Input
-                onBlur={(e) => blurHandler(e)}
                 id="telegram"
                 placeholder="@name"
                 type="text"
@@ -175,7 +103,9 @@ export function Form() {
         </div>
 
         {isLoading ? (
-          <p>loading....</p>
+          <div className="mt-10 h-12">
+            <Spinner />
+          </div>
         ) : (
           <MagicButton
             title="Let's get in touch"
@@ -186,7 +116,12 @@ export function Form() {
 
         <div className="bg-gradient-to-r from-transparent via-neutral-300 dark:via-neutral-700 to-transparent my-8 h-[1px] w-full" />
       </form>
-      <Notifications isOpen={notifications} setIsOpen={setNotifications} />
+      <Notifications
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        message={notification?.message}
+        type={notification?.type}
+      />
     </div>
   );
 }
