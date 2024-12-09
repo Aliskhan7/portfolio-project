@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { cn } from "@/utils/cn";
 
 import { Input } from "@/components/ui/Input";
@@ -54,6 +54,7 @@ export function Form() {
       });
 
       setTimeout(() => setIsOpen(false), 4000);
+      form.reset();
     } catch (e) {
       form.setFieldError("email", e as string);
       form.setFieldError("telegram", e as string);
@@ -67,9 +68,9 @@ export function Form() {
   return (
     <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
       <form className="my-8" onSubmit={form.onSubmit(handleSubmit)}>
-        <div className="flex flex-col md:flex-row space-y-t md:space-y-0 md:space-x-2 mb-4">
+        <div className="flex flex-col  md:flex-row space-y-t md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
-            <div className="mb-4">
+            <div>
               <Label htmlFor="firstname">First name</Label>
               <Input
                 id="firstname"
@@ -79,7 +80,7 @@ export function Form() {
                 {...form.getInputProps("name")}
               />
             </div>
-            <div className="mb-4">
+            <div>
               <Label htmlFor="email">Email Address</Label>
               <Input
                 id="email"
@@ -89,7 +90,7 @@ export function Form() {
                 {...form.getInputProps("email")}
               />
             </div>
-            <div className="mb-5">
+            <div>
               <Label htmlFor="email">Telegram</Label>
               <Input
                 id="telegram"
@@ -144,7 +145,9 @@ const LabelInputContainer = ({
   className?: string;
 }) => {
   return (
-    <div className={cn("flex flex-col space-y-2 w-full", className)}>
+    <div
+      className={cn("flex flex-col gap-y-[14px] space-y-2 w-full", className)}
+    >
       {children}
     </div>
   );

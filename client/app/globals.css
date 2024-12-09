@@ -94,14 +94,13 @@
   width: 100%;
   border: none !important;
   background: transparent !important;
-  outline: none !important;
   padding-top: 8px;
   padding-bottom: 8px;
 }
 .mantine-Input-wrapper .mantine-Input-input:focus {
-  outline-offset: 0 !important;
-  outline: none !important;
+  --tw-ring-offset-shadow: 0;
 }
-.mantine-Input-input .mantine-TextInput-input:focus {
-  outline: none !important;
+.mantine-InputWrapper-error {
+  color: #cb2b2b;
+  margin-top: 6px;
 }
