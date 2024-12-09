@@ -5,3 +5,9 @@
 //     locales: ["en", "ru"],
 //   },
 // };
+module.exports = {
+  i18n: {
+    locales: ["en", "ru"], // Множество языков
+    defaultLocale: "en", // Язык по умолчанию
+  },
+};
