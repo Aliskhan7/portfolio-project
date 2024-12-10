@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import { Spotlight } from "@/components/ui/Spotlight";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
@@ -5,8 +6,11 @@ import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 import Logo from "@/public/logo.svg";
 import Image from "next/image";
+import { useTranslation } from "next-i18next";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 const Hero = () => {
+  const { t } = useTranslation();
   return (
     <div className="pb-20 pt-36 ">
       <div>
@@ -34,7 +38,7 @@ const Hero = () => {
       </div>
       <TextGenerateEffect
         className="text-center text-[40px] md:text-5xl lg:text-6xl"
-        words="Transforming Concepts Into Seamless User Experiences"
+        words={t("main_title")}
       />
       <p className="text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
         Hi. I'm Aliskhan, a Frontend developer
@@ -47,6 +51,7 @@ const Hero = () => {
           position="right"
         />
       </a>
+      <LanguageSwitcher />
     </div>
   );
 };
