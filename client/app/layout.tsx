@@ -5,7 +5,6 @@ import { ThemeProvider } from "next-themes";
 import { MantineProvider } from "@mantine/core";
 const inter = Inter({ subsets: ["latin"] });
 import React from "react";
-import Notifications from "@/components/ui/Notifications";
 
 export const metadata: Metadata = {
   title: "Aliskhan's portfolio",

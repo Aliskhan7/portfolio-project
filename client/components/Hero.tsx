@@ -24,8 +24,11 @@ const Hero = () => {
         />
         <Spotlight className="top-28 left-80 h-[80vh] w-[50vw]" fill="blue" />
       </div>
-      <div className="h-screen w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.03] bg-grid-black/[0.2] absolute top-0 left-0 flex items-center justify-center">
+      <div className="h-screen -z-10 w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.03] bg-grid-black/[0.2] absolute top-0 left-0 flex items-center justify-center">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
+      </div>
+      <div className="absolute z-10 w-4 h-2 bg-red-500">
+        <LanguageSwitcher />
       </div>
 
       <div className="flex justify-center relative my-20 z-10 flex-col items-center">
@@ -40,8 +43,8 @@ const Hero = () => {
         className="text-center text-[40px] md:text-5xl lg:text-6xl"
         words={t("main_title")}
       />
-      <p className="text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
-        Hi. I'm Aliskhan, a Frontend developer
+      <p className=" text-white text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
+        Hi. I'm Aliskhan, a Frontend developer {t("main_title")}
       </p>
 
       <a href="#about">
@@ -51,7 +54,6 @@ const Hero = () => {
           position="right"
         />
       </a>
-      <LanguageSwitcher />
     </div>
   );
 };

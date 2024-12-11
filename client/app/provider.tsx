@@ -1,6 +1,6 @@
 // app/providers.tsx
 "use client";
-
+import "../i18n";
 import { NextUIProvider } from "@nextui-org/react";
 import { ThemeProvider as NextThemesProvider } from "next-themes";
 
