@@ -44,7 +44,7 @@ const Hero = () => {
         words={t("main_title")}
       />
       <p className=" text-white text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
-        Hi. I'm Aliskhan, a Frontend developer {t("main_title")}
+        Hi. I'm Aliskhan, a Frontend developer.
       </p>
 
       <a href="#about">
