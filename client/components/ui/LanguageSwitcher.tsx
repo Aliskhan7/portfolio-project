@@ -1,31 +1,45 @@
-"use client";
-import { useTranslation } from "react-i18next";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/compat/router";
 import { useState } from "react";
+import i18n from "../../i18n";
+export enum Locale {
+  Rus = "ru",
+  Eng = "en",
+}
 
 const LanguageSwitcher = () => {
-  const { i18n } = useTranslation();
-  const router = useRouter();
-  const [language, setLanguage] = useState("id");
+  const [language, setLanguage] = useState(i18n.language);
+
   const handleLanguageChange = (lang: any) => {
-    const lang1 = lang.target.value;
-    console.log(lang1);
-    setLanguage(lang1);
-    // console.log(lang);
-    i18n.changeLanguage(lang1);
-    // router!.push(router!.asPath, router!.asPath, { locale: lang });
+    const newLanguage = i18n.language === Locale.Rus ? Locale.Eng : Locale.Rus;
+    i18n.changeLanguage(newLanguage);
+    setLanguage(newLanguage);
   };
 
+  language && localStorage.setItem("lang", language);
+
   return (
-    <select onChange={handleLanguageChange} value={language}>
-      <option value="id">en</option>
-      <option value="en">ru</option>
-    </select>
-    // <div>
-    //   <button onClick={() => handleLanguageChange("en")}>English</button>
-    //   <button onClick={() => handleLanguageChange("ru")}>Русский</button>
-    // </div>
+    <>
+      <select
+        className="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-500 bg-gray-100 border border-gray-300 rounded-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600"
+        onChange={handleLanguageChange}
+        value={language}
+      >
+        <option value="ru">rus</option>
+        <option value="en">
+          <svg
+            aria-hidden="true"
+            className="h-3.5 w-3.5 rounded-full me-2"
+            xmlns="http://www.w3.org/2000/svg"
+            id="flag-icon-css-de"
+            viewBox="0 0 512 512"
+          >
+            <path fill="#ffce00" d="M0 341.3h512V512H0z" />
+            <path d="M0 0h512v170.7H0z" />
+            <path fill="#d00" d="M0 170.7h512v170.6H0z" />
+          </svg>
+          eng
+        </option>
+      </select>
+    </>
   );
 };
 
