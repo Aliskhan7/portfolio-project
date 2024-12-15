@@ -1,14 +1,22 @@
+"use client";
 import React from "react";
 import { FaLocationArrow } from "react-icons/fa6";
 import { projects } from "@/data";
 import { PinContainer } from "@/components/ui/Pin";
+import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
+import { t } from "i18next";
 
 const RecentProjects = () => {
+  // TODO: Fix this bug
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
-        A small selection of{" "}
-        <span className="text-purple">recent projects</span>
+        {/*A small selection of*/}
+        {/*<span className="text-purple">recent projects</span>*/}
+        <TextGenerateEffect
+          className="text-center text-[40px] md:text-5xl lg:text-6xl"
+          words={t("main_title")}
+        />
       </h1>
       <div className="flex flex-wrap items-center justify-center p-4 gap-x-24 gap-y-8 mt-10">
         {projects.map((item) => (
