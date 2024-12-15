@@ -5,10 +5,11 @@ export enum Locale {
   Eng = "en",
 }
 
+// TODO: Don't understand why donn't work right
 const LanguageSwitcher = () => {
   const [language, setLanguage] = useState(i18n.language);
 
-  const handleLanguageChange = (lang: any) => {
+  const handleLanguageChange = async () => {
     const newLanguage = i18n.language === Locale.Rus ? Locale.Eng : Locale.Rus;
     i18n.changeLanguage(newLanguage);
     setLanguage(newLanguage);
