@@ -1,6 +1,6 @@
 import { initReactI18next } from "react-i18next";
-import en from "./public/locales/en/en.json";
-import ru from "./public/locales/ru/ru.json";
+import en from "./public/locales/en/en";
+import ru from "./public/locales/ru/ru";
 import i18n from "i18next";
 
 const locale: string | null = localStorage.getItem("lang");
