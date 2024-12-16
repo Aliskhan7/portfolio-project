@@ -8,9 +8,18 @@ import Logo from "@/public/logo.svg";
 import Image from "next/image";
 import { useTranslation } from "next-i18next";
 import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+import { en } from "../public/locales/en/en";
+import { ru } from "../public/locales/ru/ru";
+import { useRouter } from "next/compat/router";
 
 const Hero = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
+
+  const router = useRouter();
+
+  const t = router?.locale === "en" ? en : ru;
+  console.log(router?.locale);
+
   return (
     <div className="pb-20 pt-36 ">
       <div>
@@ -41,7 +50,7 @@ const Hero = () => {
       </div>
       <TextGenerateEffect
         className="text-center text-[40px] md:text-5xl lg:text-6xl"
-        words={t("main_title")}
+        words={t.main_title}
       />
       <p className=" text-white text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
         Hi. I'm Aliskhan, a Frontend developer.

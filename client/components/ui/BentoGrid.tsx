@@ -57,7 +57,6 @@ export const BentoGridItem = ({
     setCopied(true);
   };
 
-  console.log("title", title);
   return (
     <div
       className={cn(

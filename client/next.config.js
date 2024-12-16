@@ -3,3 +3,9 @@
 // module.exports = {
 //   i18n,
 // };
+module.exports = {
+  i18n: {
+    locales: ["ru", "en"],
+    defaultLocale: "ru",
+  },
+};
