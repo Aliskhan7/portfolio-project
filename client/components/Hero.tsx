@@ -6,20 +6,8 @@ import MagicButton from "@/components/ui/MagicButton";
 import { FaLocationArrow } from "react-icons/fa6";
 import Logo from "@/public/logo.svg";
 import Image from "next/image";
-import { useTranslation } from "next-i18next";
-import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
-import { en } from "../public/locales/en/en";
-import { ru } from "../public/locales/ru/ru";
-import { useRouter } from "next/compat/router";
 
 const Hero = () => {
-  // const { t } = useTranslation();
-
-  const router = useRouter();
-
-  const t = router?.locale === "en" ? en : ru;
-  console.log(router?.locale);
-
   return (
     <div className="pb-20 pt-36 ">
       <div>
@@ -36,9 +24,6 @@ const Hero = () => {
       <div className="h-screen -z-10 w-full dark:bg-black-100 bg-white  dark:bg-grid-white/[0.03] bg-grid-black/[0.2] absolute top-0 left-0 flex items-center justify-center">
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center dark:bg-black-100 bg-white [mask-image:radial-gradient(ellipse_at_center,transparent_20%,black)]" />
       </div>
-      <div className="absolute z-10 ">
-        <LanguageSwitcher />
-      </div>
 
       <div className="flex justify-center relative my-20 z-10 flex-col items-center">
         <Image src={Logo} alt="Logo" />
@@ -50,7 +35,7 @@ const Hero = () => {
       </div>
       <TextGenerateEffect
         className="text-center text-[40px] md:text-5xl lg:text-6xl"
-        words={t.main_title}
+        words="Превращение концепций в бесшовный пользовательский опыт"
       />
       <p className=" text-white text-center md:tracking-widest mb-4 text-sm md:text-lg lg:text-2xl">
         Hi. I'm Aliskhan, a Frontend developer.

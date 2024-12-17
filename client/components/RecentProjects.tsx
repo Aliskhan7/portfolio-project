@@ -11,8 +11,10 @@ const RecentProjects = () => {
   return (
     <div className="py-20" id="projects">
       <h1 className="heading">
-        A small selection of
-        <span className="text-purple">recent projects</span>
+        {/*A small selection of*/}
+        {/*<span className="text-purple">recent projects</span>*/}
+        Небольшая подборка
+        <span className="text-purple"> недавних проектов</span>
         {/*<TextGenerateEffect*/}
         {/*  className="text-center text-[40px] md:text-5xl lg:text-6xl"*/}
         {/*  words={t("main_title")}*/}

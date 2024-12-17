@@ -10,8 +10,9 @@ export const navItems = [
 export const gridItems = [
   {
     id: 1,
-    title: "I prioritize client collaboration, fostering open communication ",
-    // title: String(t("gridBlock.title_1")),
+    // title: "I prioritize client collaboration, fostering open communication ",
+    title:
+      "Я уделяю первостепенное внимание сотрудничеству с клиентами, поддерживая открытое общение ",
     description: "",
     className: "lg:col-span-3 md:col-span-6 md:row-span-4 lg:min-h-[60vh]",
     imgClassName: "w-full h-full",
@@ -21,8 +22,8 @@ export const gridItems = [
   },
   {
     id: 2,
-    title: "I'm very flexible with time zone communications",
-    // title: String(t("gridBlock.title_1")),
+    // title: "I'm very flexible with time zone communications",
+    title: "Я очень гибко подхожу к общению в разных часовых поясах",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -32,8 +33,8 @@ export const gridItems = [
   },
   {
     id: 3,
-    title: "My tech stack",
-    // title: String(t("gridBlock.title_2")),
+    // title: "My tech stack",
+    title: "Мой стек",
     description: "I constantly try to improve",
     className: "lg:col-span-2 md:col-span-3 md:row-span-2",
     imgClassName: "",
@@ -43,8 +44,8 @@ export const gridItems = [
   },
   {
     id: 4,
-    title: "Tech enthusiast with a passion for development.",
-    // title: String(t("gridBlock.title_3")),
+    // title: "Tech enthusiast with a passion for development.",
+    title: "Энтузиаст технологий со страстью к разработке.",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -55,8 +56,8 @@ export const gridItems = [
 
   {
     id: 5,
-    title: "Currently building a JS Animation library",
-    // title: String(t("gridBlock.title_4")),
+    // title: "Currently building a JS Animation library",
+    title: "В настоящее время работаем на крупными проектами",
     description: "The Inside Scoop",
     className: "md:col-span-3 md:row-span-2",
     imgClassName: "absolute right-0 bottom-0 md:w-96 w-60",
@@ -66,8 +67,8 @@ export const gridItems = [
   },
   {
     id: 6,
-    title: "Do you want to start a project together?",
-    // title: String(t("gridBlock.title_5")),
+    // title: "Do you want to start a project together?",
+    title: "Хотите начать совместный проект?",
     description: "",
     className: "lg:col-span-2 md:col-span-3 md:row-span-1",
     imgClassName: "",
@@ -181,29 +182,37 @@ export const companies = [
 export const workExperience = [
   {
     id: 1,
-    title: "Frontend Engineer Intern",
-    desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    // title: "Frontend Engineer Intern",
+    // desc: "Assisted in the development of a web-based platform using React.js, enhancing interactivity.",
+    title: "Стажер Frontend Engineer",
+    desc: "Помогал в разработке веб-платформы с использованием React.js, повышающей интерактивность.",
     className: "md:col-span-2",
     thumbnail: "/exp1.svg",
   },
   {
     id: 2,
-    title: "Mobile App Dev - JSM Tech",
-    desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    // title: "Mobile App Dev - JSM Tech",
+    // desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
+    title: "Разработка мобильных приложений - JSM Tech",
+    desc: "Спроектировал и разработал мобильное приложение для платформ iOS и Android с использованием React Native.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp2.svg",
   },
   {
     id: 3,
-    title: "Freelance App Dev Project",
-    desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    // title: "Freelance App Dev Project",
+    // desc: "Led the dev of a mobile app for a client, from initial concept to deployment on app stores.",
+    title: "Freelance проекты по разработке приложений",
+    desc: "Руководил разработкой веб приложения для клиента, начиная с первоначальной концепции и заканчивая размещением в интернет.",
     className: "md:col-span-2", // change to md:col-span-2
     thumbnail: "/exp3.svg",
   },
   {
     id: 4,
-    title: "Lead Frontend Developer",
-    desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    // title: "Lead Frontend Developer",
+    // desc: "Developed and maintained user-facing features using modern frontend technologies.",
+    title: "Ведущий фронтенд-разработчик",
+    desc: "Разрабатывал и поддерживал пользовательские функции, используя современные фронтенд-технологии.",
     className: "md:col-span-2",
     thumbnail: "/exp4.svg",
   },
