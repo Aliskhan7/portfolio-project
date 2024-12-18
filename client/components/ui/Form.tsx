@@ -31,8 +31,7 @@ export function Form() {
 
     validate: {
       email: (value) => (/^\S+@\S+$/.test(value) ? null : "Некоректный Email"),
-      telegram: (value) =>
-        /@\S+$/.test(value) ? null : "Telegram не может быть пустым",
+      telegram: (value) => (value ? null : "Telegram не может быть пустым"),
     },
   });
 
@@ -71,34 +70,40 @@ export function Form() {
         <div className="flex flex-col  md:flex-row space-y-t md:space-y-0 md:space-x-2 mb-4">
           <LabelInputContainer>
             <div>
-              <Label htmlFor="firstname">First name</Label>
-              <Input
-                id="firstname"
-                placeholder="Your name"
-                type="text"
-                key={form.key("Your name")}
-                {...form.getInputProps("name")}
-              />
+              <Label htmlFor="firstname">Имя</Label>
+              <div className="mt-2">
+                <Input
+                  id="firstname"
+                  placeholder="Ваше имя"
+                  type="text"
+                  key={form.key("Your name")}
+                  {...form.getInputProps("name")}
+                />
+              </div>
             </div>
             <div>
-              <Label htmlFor="email">Email Address</Label>
-              <Input
-                id="email"
-                placeholder="projectmayhem@fc.com"
-                type="email"
-                key={form.key("projectmayhem@fc.com")}
-                {...form.getInputProps("email")}
-              />
+              <Label htmlFor="email">Email </Label>
+              <div className="mt-2">
+                <Input
+                  id="email"
+                  placeholder="projectmayhem@fc.com"
+                  type="email"
+                  key={form.key("projectmayhem@fc.com")}
+                  {...form.getInputProps("email")}
+                />
+              </div>
             </div>
             <div>
               <Label htmlFor="email">Telegram</Label>
-              <Input
-                id="telegram"
-                placeholder="@name"
-                type="text"
-                key={form.key("@name")}
-                {...form.getInputProps("telegram")}
-              />
+              <div className="mt-2">
+                <Input
+                  id="telegram"
+                  placeholder="@ваш ник"
+                  type="text"
+                  key={form.key("@name")}
+                  {...form.getInputProps("telegram")}
+                />
+              </div>
             </div>
           </LabelInputContainer>
         </div>

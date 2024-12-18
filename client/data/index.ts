@@ -221,8 +221,8 @@ export const workExperience = [
 export const socialMedia = [
   {
     id: 1,
-    img: "/git.svg",
-    link: "https://github.com/Aliskhan7",
+    img: "/whatsappIcon.svg",
+    link: "https://wa.me/89380048656",
   },
   {
     id: 2,
@@ -231,7 +231,17 @@ export const socialMedia = [
   },
   {
     id: 3,
-    img: "/link.svg",
+    img: "/instagramIcon.svg",
+    link: "https://www.instagram.com/a.gazamatov",
+  },
+  {
+    id: 4,
+    img: "/git.svg",
     link: "https://www.linkedin.com/in/aliskhan-gazamatov/",
+  },
+  {
+    id: 5,
+    img: "/link.svg",
+    link: "https://github.com/Aliskhan7",
   },
 ];
