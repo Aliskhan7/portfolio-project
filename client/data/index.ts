@@ -1,10 +1,14 @@
 import { t } from "i18next";
 
 export const navItems = [
-  { name: "About", link: "#about" },
-  { name: "Projects", link: "#projects" },
-  { name: "Testimonials", link: "#testimonials" },
-  { name: "Contact", link: "#contact" },
+  // { name: "About", link: "#about" },
+  { name: "О нас", link: "#about" },
+  // { name: "Projects", link: "#projects" },
+  { name: "Проекты", link: "#projects" },
+  // { name: "Testimonials", link: "#testimonials" },
+  { name: "Отзывы", link: "#testimonials" },
+  // { name: "Contact", link: "#contact" },
+  { name: "Контакты", link: "#contact" },
 ];
 
 export const gridItems = [
