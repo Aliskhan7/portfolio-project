@@ -4,10 +4,10 @@
 //   i18n,
 // };
 module.exports = {
-  i18n: {
-    locales: ["ru", "en"],
-    defaultLocale: "ru",
-  },
+  // i18n: {
+  //   locales: ["ru", "en"],
+  //   defaultLocale: "ru",
+  // },
   reactStrictMode: false, // Иногда ворнинги появляются из-за StrictMode
   eslint: {
     ignoreDuringBuilds: true, // Отключает ESLint при билде
