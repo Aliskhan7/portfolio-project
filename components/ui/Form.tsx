@@ -67,7 +67,7 @@ export function Form() {
   return (
     <div className="max-w-lg w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input">
       <form className="my-8" onSubmit={form.onSubmit(handleSubmit)}>
-        <div className="flex flex-col  md:flex-row space-y-t md:space-y-0 md:space-x-2 mb-4">
+        <div className="flex flex-col md:flex-row mb-4">
           <LabelInputContainer>
             <div>
               <Label htmlFor="firstname">Имя</Label>
@@ -81,7 +81,7 @@ export function Form() {
                 />
               </div>
             </div>
-            <div>
+            <div className="mb-4">
               <Label htmlFor="email">Email </Label>
               <div className="mt-2">
                 <Input
@@ -93,9 +93,9 @@ export function Form() {
                 />
               </div>
             </div>
-            <div>
-              <Label htmlFor="email">Telegram</Label>
-              <div className="mt-2">
+            <div className="mb-4">
+              <Label htmlFor="telegram">Telegram</Label>
+              <div className="mt-2 mb-5">
                 <Input
                   id="telegram"
                   placeholder="@ваш ник"
