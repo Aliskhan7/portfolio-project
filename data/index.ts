@@ -6,7 +6,7 @@ export const navItems = [
   // { name: "Projects", link: "#projects" },
   { name: "Проекты", link: "#projects" },
   // { name: "Testimonials", link: "#testimonials" },
-  { name: "Отзывы", link: "#testimonials" },
+  // { name: "Отзывы", link: "#testimonials" },
   // { name: "Contact", link: "#contact" },
   { name: "Контакты", link: "#contact" },
 ];
@@ -196,9 +196,9 @@ export const workExperience = [
     id: 2,
     // title: "Mobile App Dev - JSM Tech",
     // desc: "Designed and developed mobile app for both iOS & Android platforms using React Native.",
-    title: "Разработка мобильных приложений - JSM Tech",
-    desc: "Спроектировал и разработал мобильное приложение для платформ iOS и Android с использованием React Native.",
-    className: "md:col-span-2", // change to md:col-span-2
+    title: "Ментор",
+    desc: "Подготовил более 100 учеников с нуля до уверенного уровня работы с HTML, CSS, JavaScript и React. Помог освоить разработку интерфейсов, работу с API и многое другое.",
+    className: "md:col-span-2",
     thumbnail: "/exp2.svg",
   },
   {
