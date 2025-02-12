@@ -4,7 +4,10 @@ import { Form } from "@/components/ui/Form";
 
 const Footer = () => {
   return (
-    <footer className="w-full pb-10 mb-[100px] md:mb-5" id="contact">
+    <footer
+      className="w-full pb-10 mb-[30px] lg:mb-[90px] md:mb-5"
+      id="contact"
+    >
       <div className="w-full absolute left-0 -bottom-72 min-h-96 -z-[1]">
         <img
           src="/footer-grid.svg"
@@ -31,7 +34,7 @@ const Footer = () => {
         </p>
         <Form />
       </div>
-      <div className="flex mt-16 md:flex-row flex-col justify-between items-center">
+      <div className="flex mt-16 md:flex-row flex-col justify-between items-center gap-y-6">
         <p className="md:text-base text-sm md:font-normal font-light">
           Copyright © 2024 AG
         </p>
