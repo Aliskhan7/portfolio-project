@@ -1,12 +1,16 @@
 "use client";
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "@/components/ui/GradientBg";
-import { GlobeDemo } from "@/components/ui/GridGlobe";
+import dynamic from "next/dynamic";
 import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "@/data/confetti.json";
 import MagicButton from "@/components/ui/MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
+
+const GlobeDemo = dynamic(() => import("@/components/ui/GridGlobe").then((m) => m.GlobeDemo), {
+  ssr: false,
+});
 
 export const BentoGrid = ({
   className,
