@@ -41,7 +41,21 @@ const Hero = () => {
         Hi. I'm Aliskhan, a Frontend developer.
       </p>
 
-      <a href="#about">
+      <a
+        href="#about"
+        onClick={(e) => {
+          e.preventDefault();
+          const element = document.querySelector("#about");
+          if (element) {
+            const elementTop = element.getBoundingClientRect().top + window.scrollY;
+            const offset = 100; // offset for fixed nav
+            window.scrollTo({
+              top: elementTop - offset,
+              behavior: "smooth",
+            });
+          }
+        }}
+      >
         <MagicButton
           title="Show my work"
           icon={<FaLocationArrow />}

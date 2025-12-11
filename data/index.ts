@@ -85,6 +85,14 @@ export const gridItems = [
 export const projects = [
   {
     id: 1,
+    title: "Rise Speacking, Inc.",
+    des: "Rise Speacking, Inc. is a company that provides a platform for users to create and share their own speeches.",
+    img: "/rise.png",
+    iconLists: ["/next.svg", "/re.svg", "/tail.svg", "/ts.svg",],
+    link: "https://club.riseacademy.ru/",
+  },
+  {
+    id: 2,
     title: "Azars property",
     des: "Агенство дневижимости по продаже квартир и домов в Турции",
     img: "/p1.png",
@@ -92,7 +100,7 @@ export const projects = [
     link: "Недоступно",
   },
   {
-    id: 2,
+    id: 3,
     title: "Farcana - Competitive Team-Based Hero Action",
     des: "Step into Farcana, a 4v4 shooter, where immersive gameplay meets high-speed, competitive hero action. Quick movements and fast, tactical decision-making are key. Your weapons play a vital role, but true victory demands strategic ability use and seamless teamwork. Dive into the thrill of intense Star battles!",
     img: "/Far.png",
@@ -100,15 +108,15 @@ export const projects = [
     link: "https://platform.farcana.com",
   },
   {
-    id: 3,
-    title: "AI Image SaaS - Canva Application",
-    des: "A REAL Software-as-a-Service app with AI features and a payments and credits system using the latest tech stack.",
-    img: "/p3.svg",
-    iconLists: ["/re.svg", "/tail.svg", "/ts.svg", "/three.svg", "/c.svg"],
-    link: "https://github.com/adrianhajdin/ai_saas_app",
+    id: 4,
+    title: "Калькулятор рассрочки",
+    des: "Калькулятор рассрочки для покупки товаров и услуг.",
+    img: "/calc.png",
+    iconLists: ["/re.svg", "/tail.svg", "/ts.svg"],
+    link: "https://calculator-invest.netlify.app/",
   },
   {
-    id: 4,
+    id: 5,
     title: "Animated Apple Iphone 3D Website",
     des: "Recreated the Apple iPhone 15 Pro website, combining GSAP animations and Three.js 3D effects..",
     img: "/p4.svg",
@@ -163,19 +171,20 @@ export const companies = [
     img: "/spaceviewLogo.svg",
     nameImg: "/",
   },
-  // {
-  //   name: "appwrite",
-  //   img: "/app.svg",
-  //   nameImg: "/appName.svg",
-  // },
   {
     id: 3,
+    name: "rise",
+    img: "/rise-logo.svg",
+    nameImg: "/",
+  },
+  {
+    id: 4,
     name: "azars",
     img: "/azarsLogo.svg",
     nameImg: "/",
   },
   {
-    id: 4,
+    id: 5,
     name: "Expovision",
     img: "/expovisionLogo.png",
     nameImg: "/",

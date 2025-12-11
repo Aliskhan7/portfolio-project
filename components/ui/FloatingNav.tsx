@@ -7,7 +7,6 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { cn } from "@/utils/cn";
-import Link from "next/link";
 
 export const FloatingNav = ({
   navItems,
@@ -60,18 +59,37 @@ export const FloatingNav = ({
           className,
         )}
       >
-        {navItems.map((navItem: any, idx: number) => (
-          <Link
-            key={`link=${idx}`}
-            href={navItem.link}
-            className={cn(
-              "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500",
-            )}
-          >
-            <span className="block sm:hidden">{navItem.icon}</span>
-            <span className="text-sm !cursor-pointer">{navItem.name}</span>
-          </Link>
-        ))}
+        {navItems.map((navItem: any, idx: number) => {
+          const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+            e.preventDefault();
+            const href = navItem.link;
+            if (href.startsWith("#")) {
+              const element = document.querySelector(href);
+              if (element) {
+                const elementTop = element.getBoundingClientRect().top + window.scrollY;
+                const offset = 100; // offset for fixed nav
+                window.scrollTo({
+                  top: elementTop - offset,
+                  behavior: "smooth",
+                });
+              }
+            }
+          };
+
+          return (
+            <a
+              key={`link=${idx}`}
+              href={navItem.link}
+              onClick={handleClick}
+              className={cn(
+                "relative dark:text-neutral-50 items-center flex space-x-1 text-neutral-600 dark:hover:text-neutral-300 hover:text-neutral-500",
+              )}
+            >
+              <span className="block sm:hidden">{navItem.icon}</span>
+              <span className="text-sm !cursor-pointer">{navItem.name}</span>
+            </a>
+          );
+        })}
       </motion.div>
     </AnimatePresence>
   );
