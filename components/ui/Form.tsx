@@ -42,9 +42,7 @@ export function Form() {
   }: typeof form.values) => {
     try {
       setIsLoading(true);
-      const message = `Email: ${email}, Name: ${name}, Telegram: ${telegram},`;
-
-      await sendMessage(message);
+      await sendMessage({ name, email, telegram });
 
       setIsOpen(true);
       setNotification({
@@ -131,7 +129,6 @@ export function Form() {
     </div>
   );
 }
-//-1002291965069
 
 const BottomGradient = () => {
   return (

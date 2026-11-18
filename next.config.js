@@ -1,22 +1,8 @@
-// const { i18n } = require("./next-i18next.config");
-//
-// module.exports = {
-//   i18n,
-// };
+/** @type {import('next').NextConfig} */
 module.exports = {
-  // i18n: {
-  //   locales: ["ru", "en"],
-  //   defaultLocale: "ru",
-  // },
-  reactStrictMode: false, // Иногда ворнинги появляются из-за StrictMode
-  eslint: {
-    ignoreDuringBuilds: true, // Отключает ESLint при билде
-  },
-  typescript: {
-    ignoreBuildErrors: true, // Отключает TypeScript ошибки при билде
-  },
+  reactStrictMode: false,
   webpack(config) {
-    config.infrastructureLogging = { level: "error" }; // Отключает логи Webpack
+    config.infrastructureLogging = { level: "error" };
     return config;
   },
 };

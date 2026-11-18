@@ -2,11 +2,13 @@
 import { cn } from "@/utils/cn";
 import { BackgroundGradientAnimation } from "@/components/ui/GradientBg";
 import dynamic from "next/dynamic";
-import Lottie from "react-lottie";
 import { useState } from "react";
 import animationData from "@/data/confetti.json";
 import MagicButton from "@/components/ui/MagicButton";
 import { IoCopyOutline } from "react-icons/io5";
+
+// react-lottie обращается к document при импорте — грузим только в браузере
+const Lottie = dynamic(() => import("react-lottie"), { ssr: false });
 
 const GlobeDemo = dynamic(() => import("@/components/ui/GridGlobe").then((m) => m.GlobeDemo), {
   ssr: false,
