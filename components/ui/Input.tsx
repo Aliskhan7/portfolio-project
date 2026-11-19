@@ -42,6 +42,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           withAsterisk
           size={1 as any}
           type={type}
+          classNames={{
+            input: "w-full px-3 bg-transparent focus:outline-none",
+          }}
           className={cn(
             `flex h-10 w-full flex-col backdrop-filter backdrop-blur-lg saturate-180 bg-opacity-75 bg-black-200 rounded-lg border border-black-300 text-black dark:text-white shadow-input text-sm  file:border-0 file:bg-transparent 
           file:text-sm file:font-medium placeholder:text-neutral-400 dark:placeholder-text-neutral-600 

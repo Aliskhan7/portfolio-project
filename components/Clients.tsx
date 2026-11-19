@@ -1,30 +1,31 @@
 import React from "react";
-import { InfiniteMovingCards } from "@/components/ui/InfiniteMovingCards";
-import { companies, testimonials } from "@/data";
+import { companies } from "@/data";
 
 const Clients = () => {
   return (
-    <div className="py-20" id="projects">
-      <h1 className="heading mb-10">
-        {/*Kind words from <span className="text-purple">satisfied clients</span>*/}
-        Мои <span className="text-purple">довольные клиенты</span>
-      </h1>
-      <div className="flex flex-col items-center justify-center max-lg:mt-10">
-        {/*<InfiniteMovingCards*/}
-        {/*  items={testimonials}*/}
-        {/*  direction="right"*/}
-        {/*  speed="slow"*/}
-        {/*/>*/}
-        <div className="flex flex-wrap items-center justify-center gap-4 md:gap-16 max-lg:mt-10 mt-10">
-          {companies.map(({ id, img, name, nameImg }) => (
-            <div key={id} className="flex md:max-w-60 max-w-40 gap-2">
-              <img src={img} alt={name} className="w-52" />
-              {/*<img src={nameImg} alt={name} className="md:w-24 w-20" />*/}
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
+    <section className="py-20" id="clients">
+      <h2 className="heading">
+        Нам <span className="text-purple">доверяют</span>
+      </h2>
+      <ul className="mt-12 flex flex-wrap items-center justify-center gap-x-10 gap-y-8 md:gap-x-16">
+        {companies.map(({ id, img, name }) => (
+          <li
+            key={id}
+            className="flex h-12 w-32 items-center justify-center md:w-40"
+          >
+            {/* Логотипы в одном белом цвете, чтобы смотрелись единым рядом */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={img}
+              alt={name}
+              title={name}
+              loading="lazy"
+              className="max-h-full max-w-full object-contain brightness-0 invert opacity-60 transition-opacity duration-300 hover:opacity-100"
+            />
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 };
 
