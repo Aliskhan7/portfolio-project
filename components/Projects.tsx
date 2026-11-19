@@ -164,7 +164,7 @@ const ProjectCover = ({ project }: { project: Project }) => (
   >
     <div className="absolute inset-0 bg-grid-white/[0.06]" />
     {project.image ? (
-      <div className="absolute inset-x-6 top-6 bottom-0 overflow-hidden rounded-t-xl border border-white/20 bg-[#0b0e24] shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 lg:inset-x-10 lg:top-10">
+      <div className="absolute inset-x-6 top-6 -bottom-4 overflow-hidden rounded-t-xl border border-white/20 bg-[#0b0e24] shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 lg:inset-x-10 lg:top-10">
         <div className="flex h-6 items-center gap-1.5 border-b border-white/10 px-3">
           <span className="h-2 w-2 rounded-full bg-white/30" />
           <span className="h-2 w-2 rounded-full bg-white/30" />
@@ -175,7 +175,7 @@ const ProjectCover = ({ project }: { project: Project }) => (
           src={project.image}
           alt={`Скриншот проекта ${project.title}`}
           loading="lazy"
-          className="w-full object-cover object-top"
+          className="h-[calc(100%-1.5rem)] w-full object-cover object-top"
         />
       </div>
     ) : (

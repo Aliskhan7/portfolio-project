@@ -43,12 +43,15 @@ const Hero = () => {
       </p>
 
       <div className="relative z-10 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6">
-        <MagicButton
-          title="Обсудить проект"
-          icon={<FaLocationArrow />}
-          position="right"
-          handleClick={() => scrollToId("#contact")}
-        />
+        {/* Обёртка фиксирует ширину: иначе mx-auto у MagicButton растаскивает кнопки по краям */}
+        <div className="w-full md:w-60">
+          <MagicButton
+            title="Обсудить проект"
+            icon={<FaLocationArrow />}
+            position="right"
+            handleClick={() => scrollToId("#contact")}
+          />
+        </div>
         <button
           type="button"
           onClick={() => scrollToId("#projects")}
