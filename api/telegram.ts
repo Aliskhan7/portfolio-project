@@ -1,14 +1,19 @@
-const baseUrl =
-  "https://api.telegram.org/bot7541911241:AAFW3rQPlvzxByLzApwFFJn8YGR8UsUwqDg/";
+export type ContactPayload = {
+  name: string;
+  email: string;
+  telegram: string;
+};
 
-export const sendMessage = async (message: string): Promise<void> => {
-  const url = `${baseUrl}sendMessage?chat_id=-1002291965069&text=${message}`;
-
-  const response = await fetch(url);
+// Заявка уходит на наш серверный роут, токен бота в браузер не попадает.
+export const sendMessage = async (payload: ContactPayload): Promise<void> => {
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(payload),
+  });
 
   if (!response.ok) {
-    const error = await response.json();
-
-    await Promise.reject(error || "Что-то пошло не так...");
+    const data = await response.json().catch(() => null);
+    throw data?.error || "Что-то пошло не так...";
   }
 };

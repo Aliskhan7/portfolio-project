@@ -104,3 +104,27 @@
   color: #cb2b2b;
   margin-top: 6px;
 }
+
+/* Появление слов в заголовке (TextGenerateEffect) */
+.text-reveal {
+  opacity: 0;
+  filter: blur(10px);
+  animation-name: text-reveal;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes text-reveal {
+  to {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .text-reveal {
+    animation: none;
+    opacity: 1;
+    filter: none;
+  }
+}

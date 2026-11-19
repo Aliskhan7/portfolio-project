@@ -1,98 +1,72 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
+import Script from "next/script";
+import React from "react";
 import { ThemeProvider } from "next-themes";
 import { MantineProvider } from "@mantine/core";
+import { CONTACT_EMAIL, SITE_URL, socialMedia } from "@/data";
+import "./globals.css";
+
 const inter = Inter({ subsets: ["latin", "cyrillic"] });
-import React from "react";
-import Script from "next/script";
-import SEOHead from "@/components/SEOHead";
+
+const TITLE = "Студия AG — разработка веб-приложений и автоматизация бизнеса";
+const DESCRIPTION =
+  "Разрабатываем веб-приложения, личные кабинеты и сайты, интегрируем с Bitrix24, WhatsApp и Telegram, делаем дашборды для руководителей. React, Next.js, NestJS. Грозный, Москва, удалённо.";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "Алисхан Газаматов - Frontend разработчик | Портфолио",
-    template: "%s | Алисхан Газаматов",
+    default: TITLE,
+    template: "%s | Студия AG",
   },
-  description:
-    "Профессиональный Frontend разработчик. Разрабатываю веб-приложения для бизнеса на React, Next.js, TypeScript. Создаю корпоративные решения, бизнес-платформы и мобильные приложения для компаний. Доступен для работы в разных часовых поясах. Грозный, Москва, Россия.",
+  description: DESCRIPTION,
   keywords: [
+    "разработка веб приложений",
+    "студия веб разработки",
+    "автоматизация бизнеса",
+    "интеграция Bitrix24",
+    "дашборд для руководителя",
+    "разработка личного кабинета",
+    "чат-бот WhatsApp Telegram",
     "frontend разработчик",
     "веб разработчик",
     "React разработчик",
     "Next.js разработчик",
     "TypeScript разработчик",
-    "разработчик из Грозного",
-    "разработчик из России",
     "фронтенд разработчик Грозный",
-    "веб разработка Грозного",
-    "React Native разработчик",
-    "мобильная разработка",
-    "веб приложения",
+    "веб разработка Грозный",
     "веб приложения для бизнеса",
     "корпоративные веб приложения",
-    "бизнес приложения",
     "разработка бизнес приложений",
-    "веб разработка для компаний",
-    "корпоративная разработка",
-    "бизнес платформы",
-    "enterprise разработка",
-    "портфолио разработчика",
-    "freelance разработчик",
-    "веб дизайн",
-    "UI/UX разработка",
     "frontend developer",
-    "web developer",
     "React developer",
     "Next.js developer",
-    "TypeScript developer",
-    "business web applications",
-    "enterprise applications",
-    "corporate web development",
-    "Chechen developer",
-    "Russian developer",
-    "mobile app developer",
   ],
-  authors: [{ name: "Aliskhan Gazamatov" }],
-  creator: "Aliskhan Gazamatov",
-  publisher: "Aliskhan Gazamatov",
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
-  },
-  metadataBase: new URL("https://ag-one.netlify.app/"), // Замените на ваш домен
-  alternates: {
-    canonical: "/",
-    languages: {
-      "ru-RU": "/ru",
-      "en-US": "/en",
-    },
-  },
+  authors: [{ name: "Алисхан Газаматов", url: SITE_URL }],
+  creator: "Алисхан Газаматов",
+  formatDetection: { email: false, address: false, telephone: false },
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "ru_RU",
-    alternateLocale: ["en_US"],
-    url: "https://ag-one.netlify.app/", // Замените на ваш домен
-    siteName: "Портфолио Алисхана Газаматова",
-    title: "Алисхан Газаматов - Frontend разработчик | Портфолио",
-    description:
-      "Профессиональный Frontend разработчик. Разрабатываю веб-приложения для бизнеса на React, Next.js, TypeScript. Создаю корпоративные решения и бизнес-платформы. Грозный, Москва, Россия.",
+    url: SITE_URL,
+    siteName: "Студия AG",
+    title: TITLE,
+    description: DESCRIPTION,
     images: [
       {
-        url: "/og-bg.jpg", // Добавьте OG изображение
+        url: "/og-bg.jpg",
         width: 1200,
         height: 630,
-        alt: "Алисхан Газаматов - Frontend разработчик",
+        alt: "Студия AG — разработка веб-приложений",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Алисхан Газаматов - Frontend разработчик | Портфолио",
-    description:
-      "Профессиональный Frontend разработчик. Разрабатываю веб-приложения для бизнеса на React, Next.js, TypeScript. Корпоративные решения и бизнес-платформы. Грозный, Москва, Россия.",
-    images: ["/og-image.png"], // Добавьте Twitter изображение
-    creator: "@your_twitter", // Замените на ваш Twitter
+    title: TITLE,
+    description: DESCRIPTION,
+    images: ["/og-bg.jpg"],
   },
   robots: {
     index: true,
@@ -105,18 +79,51 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    // Добавьте ваши ключи верификации
-    // google: "your-google-verification-code",
-    // yandex: "your-yandex-verification-code",
+  other: {
+    "geo.region": "RU-CE",
+    "geo.placename": "Грозный",
   },
 };
 
-export default function RootLayout({ children }: any) {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Алисхан Газаматов",
+  alternateName: "Aliskhan Gazamatov",
+  jobTitle: "Frontend Developer",
+  description: DESCRIPTION,
+  url: SITE_URL,
+  email: CONTACT_EMAIL,
+  sameAs: socialMedia
+    .filter(({ name }) => name !== "WhatsApp")
+    .map(({ link }) => link),
+  knowsAbout: [
+    "React",
+    "Next.js",
+    "TypeScript",
+    "JavaScript",
+    "React Native",
+    "Frontend Development",
+  ],
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "RU",
+    addressRegion: "Чеченская Республика",
+  },
+};
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   return (
-    <html lang="ru">
+    <html lang="ru" suppressHydrationWarning>
       <body className={inter.className}>
-        <SEOHead />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <MantineProvider>
           <ThemeProvider
             attribute="class"
@@ -130,16 +137,16 @@ export default function RootLayout({ children }: any) {
 
         <Script id="metrika-counter" strategy="afterInteractive">
           {`
-           (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
               m[i].l=1*new Date();
               for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
               k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
               (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    
-              ym(100030234, "init", {
-              clickmap:true,
-              trackLinks:true,
-              accurateTrackBounce:true
+
+            ym(100030234, "init", {
+              clickmap: true,
+              trackLinks: true,
+              accurateTrackBounce: true
             });
           `}
         </Script>

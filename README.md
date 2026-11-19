@@ -1,36 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Портфолио Алисхана Газаматова
 
-## Getting Started
+Одностраничный сайт-портфолио на Next.js 14 (App Router), Tailwind CSS и Framer Motion.
+Прод: https://ag-one.netlify.app
 
-First, run the development server:
+## Запуск
 
 ```bash
-npm run dev
-# or
+yarn install
+cp .env.example .env.local   # заполнить TELEGRAM_BOT_TOKEN и TELEGRAM_CHAT_ID
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Структура
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `app/` — страница, layout с SEO-метаданными, `robots.ts`, `sitemap.ts`
+- `app/api/contact` — приём заявок с формы и отправка в Telegram (токен только на сервере)
+- `components/` — секции страницы, `components/ui/` — переиспользуемые UI-компоненты
+- `data/index.ts` — весь контент: проекты, опыт, клиенты, соцсети, адрес сайта
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Переменные окружения
 
-## Learn More
+| Переменная           | Назначение                |
+| -------------------- | ------------------------- |
+| `TELEGRAM_BOT_TOKEN` | токен бота для заявок     |
+| `TELEGRAM_CHAT_ID`   | чат, куда приходят заявки |
 
-To learn more about Next.js, take a look at the following resources:
+На Netlify задаются в Site settings → Environment variables.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Проверки
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+```bash
+yarn lint          # ESLint
+yarn format:check  # Prettier
+yarn build         # сборка с проверкой типов и линтера
+```
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Pre-commit (husky + lint-staged) автоматически запускает ESLint и Prettier на изменённых файлах.
